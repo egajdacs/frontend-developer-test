@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'https://tst3-frontend-library.iipaysp.com/assets/css/iipay_frontend_test.css';
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.breadcrumb{
+  margin-top: 1px;
+}
