@@ -12,6 +12,22 @@
   line-height: 1.42857;
 }
 
+.btn-not{
+  background: rgba($color: #0c6c7b, $alpha: 0.2);
+}
+
+.btn-home{
+  background: rgba($color: #716aca, $alpha: 0.2);
+}
+
+.dropdown-toggle::after{
+  display: none !important;
+}
+
+.badge-pill{
+  padding: 5px 10px;
+}
+
 .dropdown .dropdown-menu{
   width: 400px !important;
 }
