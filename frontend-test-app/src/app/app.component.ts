@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './_services/data.service';
 import { faHome, faSync, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
     this.dataService.getItem().subscribe(data => {
       this.title = data.title;
       this.country = data.country;
-      this.lastUpdated = data.lastUpdated;
+      this.lastUpdated = formatDate(data.lastUpdated, 'medium', 'en-GB' );
       this.lastUpdatedBy = data.lastUpdatedBy;
       this.body = data.body;
     });
