@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './_services/data.service';
-import { faHome, faSync } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSync, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +18,13 @@ export class AppComponent implements OnInit {
 
   home = faHome;
   sync = faSync;
+  success = faCheckCircle;
+  error = faTimesCircle;
 
   constructor(private dataService: DataService){}
 
   ngOnInit(): void {
     this.dataService.getItem().subscribe(data => {
-      console.log(data);
       this.title = data.title;
       this.country = data.country;
       this.lastUpdated = data.lastUpdated;
@@ -32,7 +33,6 @@ export class AppComponent implements OnInit {
     });
 
     this.dataService.getNotifications().subscribe(nots => {
-      console.log(nots);
       this.notifications = nots;
     })
   }

@@ -1,14 +1,45 @@
 <div class="navbar navbar-light bg-light justify-content-between">
   <h2 class="navbar-brand">iiPay</h2>
-  <form class="form-inline">
-    <fa-icon [icon]="home"></fa-icon>
-    <fa-icon [icon]="sync"></fa-icon>
-  </form>
+  <div>
+    <ul class="nav">
+      <li class="nav-item">
+        <button class="btn btn-lg btn-circle btn-info"><fa-icon [icon]="home"></fa-icon></button>
+      </li>
+      <li class="nav-item">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn bn-lg btn-circle btn-success" id="dropdownBasic1" ngbDropdownToggle><fa-icon [icon]="sync"></fa-icon></button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1" container="body" class="dropdown-menu-right">
+            <h4 class="dropdown-header">Latest Legislative Updates <span class="pull-right badge badge-pill badge-primary">{{notifications.length}}</span></h4>
+            <div *ngFor="let n of notifications">
+              <div class="dropdown-divider"></div>
+              <div ngbDropdownItem>
+                <div class="row">
+                  <div class="col-lg-1">
+                    <fa-icon [hidden]="n.status!='success'" [icon]="success" [styles]="{'color': '#2da68e'}"></fa-icon>
+                    <fa-icon [hidden]="n.status=='success'" [icon]="error" [styles]="{'color': 'red'}"></fa-icon>
+                  </div>
+                  <div class=col-lg-11>
+                    <span class="bold">{{n.title}}</span><br>
+                    <span>Click to view</span>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
 </div>
 <div class="container-fluid">
   <div aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#"> <fa-icon [icon]="home"></fa-icon> Legislative Updates</a></li>
       <li class="breadcrumb-item"><a href="#">{{country}}</a></li>
       <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
     </ol>
@@ -19,9 +50,9 @@
         <div class="card-body">
           <h5 class="card-title">{{title}}</h5>
           <hr>
-          <span class="lastUpdatedBy text-dark-grey">By {{lastUpdatedBy}}</span><br>
-          <span class="text-dark-grey">{{lastUpdated}}</span>
-          <div [innerHTML]="body" class="text-dark-grey"></div>
+          <span class="bold text-primary">By {{lastUpdatedBy}}</span><br>
+          <span class="text-primary">{{lastUpdated}}</span>
+          <div [innerHTML]="body" class="text-primary"></div>
         </div>
       </div>
     </div>
